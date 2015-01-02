@@ -7,6 +7,8 @@ to the OpenWrt/JavaScript world.
 
 That is possible on the [Yun][1], because the two are wired together with a serial line and there is a protocol/software-library called [Firmata][3] for both sides, to connect them.
 
+My connecting post: [Programming an AVR MCU in JavaScript](http://imrehorvath.wordpress.com/2015/01/02/programming-an-avr-mcu-in-javascript/)
+
 # Reasoning
 
 ## Gains
