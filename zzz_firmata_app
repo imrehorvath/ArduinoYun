@@ -1,0 +1,16 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2015 imi.horvath@gmail.com
+
+START=99
+
+FIRMATA_APP=/mnt/sda1/firmata_app.js
+
+start() {
+	[ -x /usr/bin/node ] || return 1
+	[ -f $FIRMATA_APP ] || return 1
+	start-stop-daemon -S -b -x /usr/bin/node $FIRMATA_APP
+}
+
+stop() {
+	start-stop-daemon -n nodejs -K
+}
