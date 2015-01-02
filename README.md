@@ -14,7 +14,7 @@ That is possible on the [Yun][1], because the two are wired together with a seri
 - More expressive power
 - More dynamic development
 - Easier integration with tons of libraries
-- Easier reprogramming
+- Easier re-programming
 
 ### More expressive power
 
@@ -36,7 +36,7 @@ The server-side JavaScript implementation [Node.js][4] is provided for the [linu
 
 Node.js is very popular and there is a huge community behind constantly providing improvement and growing number of open-source libraries. These libraries are easy to use in Node, with `npm`, the package management system for Node.
 
-### Easier reprogramming
+### Easier re-programming
 
 You only need the Arduino application to program the firmata sketch on the MCU once. After this, you can simply transfer new JavaScript code to the Linux side to update the program for your project.
 
