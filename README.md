@@ -1,9 +1,11 @@
 # About
 
 This is a playground for the [Arduino Yun][1], the AVR Microcontroller and [Embedded Linux][2] combo.
+
 I'm doing some experiments with the concept: Moving the Microcontroller programming as is, from the AVR/C++ world,
 to the OpenWrt/JavaScript world.
-That is possible on the [Yun][1], because the two are wired together with a serial line and there is a protocol/software-library called [Firmata][3] for both sides.
+
+That is possible on the [Yun][1], because the two are wired together with a serial line and there is a protocol/software-library called [Firmata][3] for both sides, to connect them.
 
 # Reasoning
 
@@ -16,15 +18,23 @@ That is possible on the [Yun][1], because the two are wired together with a seri
 
 ### More expressive power
 
-The powerful features of JavaScript like closures, first-class function objects and higher-order functions makes it possible for programmers to express their ideas better, on a more abstract level. Using these tools, one can capture repeating patterns of computation and abstract them away more easily. That is a gain compared to C++ which provides less powerful tools for building abstractions.
+The powerful features of JavaScript like closures, first-class function objects and higher-order functions makes it possible for programmers to express their ideas better, on a more abstract level.
+
+Using these tools, one can capture repeating patterns of computation and abstract them away more easily. That is a gain compared to C++ which provides less powerful tools for building abstractions.
 
 ### More dynamic development
 
-JavaScript is a dynamic language, one can change object properties, add or remove methods on the fly. Also using the REPL it is possibly to tinker with the application while running. It's a huge gain compared to the tedious compile, build and upload cycle. You can experiment with the AVR live!
+JavaScript is a dynamic language, one can change object properties, add or remove methods on the fly.
+
+Also using the REPL it is possibly to tinker with the application while it's running. It's a huge gain compared to the tedious compile, build and upload cycle doing traditianal AVR development.
+
+You can experiment with the AVR on the fly!
 
 ### Easier integration with tons of libraries
 
-The server-side JavaScript implementation [Node.js][4] is provided for the [linux][2] on the Yun. Node.js is very popular and there is a huge community behind constantly providing improvement and growing number of open-source libraries. These libraries are easy to use in Node, using it's package management system the `npm`.
+The server-side JavaScript implementation [Node.js][4] is provided for the [linux][2] on the Yun.
+
+Node.js is very popular and there is a huge community behind constantly providing improvement and growing number of open-source libraries. These libraries are easy to use in Node, with `npm`, the package management system for Node.
 
 ### Easier reprogramming
 
@@ -37,17 +47,18 @@ You only need the Arduino application to program the firmata sketch on the MCU o
 
 ### Performance loss
 
-For realtime applications the bottleneck introduced by the serial communication between the MCU and the Linux chip might be problematic.
+For realtime applications the bottleneck introduced by the serial communication/protocol between the MCU and the Linux chip might be a problem.
 
 ### Reliability
 
 Since it is a much more complex setup using a Linux box to constantly communicate with the MCU on a serial line using the Firmata protocol compared to a more simpler design using an AVR MCU only, it meas more dangers to the reliable operation.
+
 Also a [race condition issue](http://playground.arduino.cc/Hardware/Yun#rebootStability) arises when starting up, or resetting either part.
 
 # Setting up
 
 - Arduino Yun with the [latest firmware](http://arduino.cc/en/Tutorial/YunSysupgrade)
-- Extending the limited disk space using a microSD card
+- [Extending the limited disk space](http://arduino.cc/en/Tutorial/ExpandingYunDiskSpace) using a microSD card
 - Setting up the MCU side to be usable with Firmata
 - Setting up the Linux side
 - Setting up the development machine side
@@ -135,13 +146,14 @@ uci set fstab.@mount[0].enabled_fsck=0
 uci set fstab.@mount[0].options=rw,sync,noatime,nodiratime
 uci commit
 ```
+
 ## Setting up the MCU side
 
 You need to upload the [modified sketch](StandardFirmataForATH0.ino) using the serial line between the two chips provided. I did it using the USB cable and the [Arduino software](http://arduino.cc/en/Main/Software)
 
 The crucial part is in the `setup` function:
 
-```
+```cplusplus
   // 2500 is the bare minimum needed to be able to reboot both linino and leonardo.
   // if reboot fails try increasing this number
   // The more you run on linux the higher this number should be
@@ -163,7 +175,11 @@ The crucial part is in the `setup` function:
 
 ## Setting up the Linux side
 
-The Linux side is configured to use the serial line between the two chips as a serial console. It is a good thing if things go wrong with the Linux. In that case with the appropriate sketch programmed to the MCU you can still access the kernel on the Linux side when booting. On the other side we want to use the Firmata protocol over this very same serial line to control the MCU. This two does interfere with each other. So special care must be taken. One is in the above modification to the `StandardFirmata` sketch. The others are for the Linux part and are listed below.
+The Linux side is configured to use the serial line between the two chips as a serial console. It's a good thing if things go wrong with the Linux. In that case with the appropriate sketch programmed to the MCU you can still access the kernel on the Linux side when booting.
+
+On the other hand we want to use the Firmata protocol over this very same serial line to control the MCU. This two does interfere with each other. So special care must be taken.
+
+One is in the above modification to the `StandardFirmata` sketch. The others are for the Linux part and are listed below.
 
 Do not ask for launching a console on the serial line
 ```
@@ -224,11 +240,11 @@ stop() {
 ```
 
 Enable it
-```bash
+```
 root@Arduino:~# /etc/init.d/zzz_firmata_app enable
 ```
 
-After this it will run the firmata app on the microSD every time it's booted.
+After this the firmata app will run automatically every time the Yun is booted.
 
 You can stop and start it again manually as well. See the help:
 ```
