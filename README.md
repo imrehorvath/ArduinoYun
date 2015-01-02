@@ -76,7 +76,7 @@ Check if there is enough free disk space on the Linux
 df / | awk '/rootfs/ {print $4}'
 ```
 
-Install tools for particioning, creating the file systems and for copying conent
+Install tools for partitioning, creating the file systems and for copying conent
 ```bash
 opkg update
 opkg install e2fsprogs mkdosfs fdisk rsync
@@ -153,7 +153,7 @@ You need to upload the [modified sketch](StandardFirmataForATH0.ino) using the s
 
 The crucial part is in the `setup` function:
 
-```cplusplus
+```c++
   // 2500 is the bare minimum needed to be able to reboot both linino and leonardo.
   // if reboot fails try increasing this number
   // The more you run on linux the higher this number should be
@@ -182,16 +182,16 @@ On the other hand we want to use the Firmata protocol over this very same serial
 One is in the above modification to the `StandardFirmata` sketch. The others are for the Linux part and are listed below.
 
 Do not ask for launching a console on the serial line
+`root@Arduino:~# cat /etc/inittab`
 ```
-root@Arduino:~# cat /etc/inittab 
 ::sysinit:/etc/init.d/rcS S boot
 ::shutdown:/etc/init.d/rcS K shutdown
 #ttyATH0::askfirst:/bin/ash --login
 ```
 
 Silent kernel debug messages on the serial line
-```
-root@Arduino:~# cat /etc/rc.local 
+`root@Arduino:~# cat /etc/rc.local`
+```bash
 # Put your custom commands here that should be executed once
 # the system init finished. By default this file does nothing.
 
@@ -213,8 +213,8 @@ exit 0
 ```
 
 Create a wrapper for rebooting, which resets the MCU
-```
-root@Arduino:/mnt/sda1# cat /bin/reboot 
+`root@Arduino:/mnt/sda1# cat /bin/reboot`
+```bash
 reset-mcu
 /sbin/reboot
 ```
@@ -240,9 +240,7 @@ stop() {
 ```
 
 Enable it
-```
-root@Arduino:~# /etc/init.d/zzz_firmata_app enable
-```
+`root@Arduino:~# /etc/init.d/zzz_firmata_app enable`
 
 After this the firmata app will run automatically every time the Yun is booted.
 
