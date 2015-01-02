@@ -224,25 +224,9 @@ reset-mcu
 /sbin/reboot
 ```
 
-Configure the firmata app to be run as a [service](zzz_firmata_app) automatically when powering up the Yun
-```bash
-#!/bin/sh /etc/rc.common
-# Copyright (C) 2015 imi.horvath@gmail.com
+Configure the firmata app to be run as a service automatically when powering up the Yun
 
-START=99
-
-FIRMATA_APP=/mnt/sda1/firmata_app.js
-
-start() {
-  [ -x /usr/bin/node ] || return 1
-  [ -f $FIRMATA_APP ] || return 1
-  start-stop-daemon -S -b -x /usr/bin/node $FIRMATA_APP
-}
-
-stop() {
-  start-stop-daemon -n nodejs -K
-}
-```
+You can use the inittab file for example: [zzz_firmata_app](zzz_firmata_app)
 
 Enable it
 
@@ -273,7 +257,7 @@ After these modifications, please reboot your Yun!
 
 I assume you are using a Mac or a Linux machine.
 
-*Note* adding your public key to the Yun can make your life easier.
+*Note* by adding your public key to the Yun can make your life easier.
 
 You can use a simple helper script to upload your firmata app to the Yun.
 
