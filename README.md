@@ -228,7 +228,7 @@ reset-mcu
 
 ### Configure the firmata app to be run as a service automatically when powering up the Yun
 
-You can use the inittab file for example: [zzz_firmata_app](zzz_firmata_app)
+You can place the file [zzz_firmata_app](zzz_firmata_app) in `/etc/init.d/` for example.
 
 To enable, run:
 
