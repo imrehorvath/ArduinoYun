@@ -180,7 +180,7 @@ On the other hand we want to use the Firmata protocol over this very same serial
 
 One is in the above modification to the `StandardFirmata` sketch. The others are for the Linux part and are listed below.
 
-Do not ask for launching a console on the serial line
+### Do not ask for launching a console on the serial line
 
 `root@Arduino:~# cat /etc/inittab`
 
@@ -190,7 +190,7 @@ Do not ask for launching a console on the serial line
 #ttyATH0::askfirst:/bin/ash --login
 ```
 
-Silent kernel debug messages on the serial line
+### Silent kernel debug messages on the serial line
 
 `root@Arduino:~# cat /etc/rc.local`
 
@@ -215,7 +215,7 @@ echo 0 > /proc/sys/kernel/printk
 exit 0
 ```
 
-Create a wrapper for rebooting, which resets the MCU
+### Create a wrapper for rebooting, which resets the MCU
 
 `root@Arduino:/mnt/sda1# cat /bin/reboot`
 
@@ -224,17 +224,17 @@ reset-mcu
 /sbin/reboot
 ```
 
-Configure the firmata app to be run as a service automatically when powering up the Yun
+### Configure the firmata app to be run as a service automatically when powering up the Yun
 
 You can use the inittab file for example: [zzz_firmata_app](zzz_firmata_app)
 
-Enable it
+To enable, run:
 
 `root@Arduino:~# /etc/init.d/zzz_firmata_app enable`
 
 After this the firmata app will run automatically every time the Yun is booted.
 
-You can stop and start it again manually as well. See the help:
+*Note* that you can stop and start it again manually as well:
 
 `root@Arduino:~# /etc/init.d/zzz_firmata_app`
 
@@ -251,7 +251,7 @@ Available commands:
 
 ```
 
-After these modifications, please reboot your Yun!
+After these modifications, please **reboot** your Yun!
 
 ## Setting up the development machine
 
