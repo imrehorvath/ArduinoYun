@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright (C) 2015 imi.horvath@gmail.com
 
-[ "$1" == "-h" -o "$1" == "--help" -o "$1" == "" -o "$#" -ne 1 ] && {
+[ "$1" == "-h" -o "$1" == "--help" -o "$1" == "" -o $# -ne 1 ] && {
   cat >&2 <<HELPTEXT
 
 Usage: `basename $0` <file>
@@ -28,5 +28,7 @@ cat "$1" | ssh root@arduino.local \
 '(echo -n "Stopping Firmata app... "; /etc/init.d/zzz_firmata_app stop);
 echo -n "Uploading... "; cat >/mnt/sda1/firmata_app.js && echo "Done" &&
 (echo "Starting Firmata app..."; /etc/init.d/zzz_firmata_app start)'
+
+[ $? -eq 0 ] || exit 1
 
 exit 0
