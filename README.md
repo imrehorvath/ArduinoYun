@@ -1,11 +1,11 @@
 # About
 
-This is a playground for the [Arduino Yun][1], the AVR Microcontroller and [Embedded Linux][2] combo.
+This is a playground for the [Arduino Yun][1], the AVR Microcontroller (MCU) and [Embedded Linux][2] (Linux chip) combo.
 
 I'm doing some experiments with the concept: Moving the Microcontroller programming as is, from the AVR/C++ world,
 to the OpenWrt/JavaScript world.
 
-That is possible on the [Yun][1], because the two are wired together with a serial line and there is a protocol/software-library called [Firmata][3] for both sides, to connect them.
+That is possible on the [Yun][1], because the MCU and the Linux chip are connected with a serial line on-board and there is a protocol/software-library called [Firmata][3] which makes it possible for the two parts to talk to each other.
 
 My connecting post: [Programming an AVR MCU in JavaScript](http://imrehorvath.wordpress.com/2015/01/02/programming-an-avr-mcu-in-javascript/)
 
@@ -26,7 +26,7 @@ Using these tools, one can capture repeating patterns of computation and abstrac
 
 ### More dynamic development
 
-JavaScript is a dynamic language, one can change object properties, add or remove methods on the fly.
+JavaScript is a dynamic language, one can change object properties, add or remove methods on the fly, and will take effect through the prototype chain.
 
 Also using the REPL it is possibly to tinker with the application while it's running. It's a huge gain compared to the tedious compile, build and upload cycle doing traditianal AVR development.
 
