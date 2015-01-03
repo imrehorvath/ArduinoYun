@@ -17,6 +17,7 @@ My connecting post: [Programming an AVR MCU in JavaScript](http://imrehorvath.wo
 - More dynamic development
 - Easier integration with tons of libraries
 - Easier re-programming
+- No restart (neither MCU nor Linux) is needed after changing the application code
 
 ### More expressive power
 
