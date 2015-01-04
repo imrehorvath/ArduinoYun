@@ -50,7 +50,9 @@ You only need the Arduino application to program the firmata sketch on the MCU o
 
 ### Performance loss
 
-For realtime applications the bottleneck introduced by the serial communication/protocol between the MCU and the Linux chip might be a problem.
+Obviously the whole setup must be slower than the MCU only low level C/C++ code based solution.
+
+Also the bottleneck introduced by the serial communication/protocol between the MCU and the Linux chip needs to be mentioned as well.
 
 ### Reliability
 
