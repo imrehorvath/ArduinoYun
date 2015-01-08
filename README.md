@@ -47,6 +47,7 @@ You only need the Arduino application to program the firmata sketch on the MCU o
 
 - Performance loss
 - Reliability
+- Existing low-level libraries are unavailable
 
 ### Performance loss
 
@@ -59,6 +60,12 @@ Also the bottleneck introduced by the serial communication/protocol between the 
 Since it is a much more complex setup using a Linux box to constantly communicate with the MCU on a serial line using the Firmata protocol compared to a more simpler design using an AVR MCU only, it meas more dangers to the reliable operation.
 
 Also a [race condition issue](http://playground.arduino.cc/Hardware/Yun#rebootStability) arises when starting up, or resetting either part.
+
+### Existing low-level libraries are unavailable
+
+For example the [Arduino-IRremote](https://github.com/shirriff/Arduino-IRremote) library is unusable with this setup. Though there are some other libraries for example the one for controlling the WiFi shield are rendered obsolete, since the Embedded Linux side can handle these.
+
+To sum up. Some of the problems can be shifted to the Linux and some can't. For those which can be shifted, you do not need the AVR side library anymore.
 
 # Setting up
 
