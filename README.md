@@ -29,9 +29,9 @@ Using these tools, one can capture repeating patterns of computation and abstrac
 
 JavaScript is a dynamic language, one can change object properties, add or remove methods on the fly, and will take effect through the prototype chain.
 
-Also using the REPL it is possibly to tinker with the application while it's running. It's a huge gain compared to the tedious compile, build and upload cycle doing traditianal AVR development.
+Also using the REPL it is possible to tinker with the application while it's running. It's a huge gain compared to the tedious compile, build and upload cycle doing traditianal AVR development.
 
-You can experiment with the AVR on the fly!
+*Note* that this more dynamic development is possible with any Arduino hooked up to a computer via USB. But for the Yun it's possible to keep the developed code and make it permanent by running it on the Linux chip within the Yun.
 
 ### Easier integration with tons of libraries
 
