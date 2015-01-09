@@ -9,6 +9,8 @@ That is possible on the [Yun][1], because the MCU and the Linux chip are connect
 
 My connecting post: [Programming an AVR MCU in JavaScript](http://imrehorvath.wordpress.com/2015/01/02/programming-an-avr-mcu-in-javascript/)
 
+**Note** that, there is another fine and similar solution, but in Ruby. The [Arduino Firmata](http://shokai.github.io/arduino_firmata/). The difference is that you can only use it with a PC or Mac, but bot with the Embedded Linux on the Yun. That is because the Ruby gems with native extensions are not supported on the Embedded Linux system at this time.
+
 # Reasoning
 
 ## Gains
@@ -31,7 +33,7 @@ JavaScript is a dynamic language, one can change object properties, add or remov
 
 Also using the REPL it is possible to tinker with the application while it's running. It's a huge gain compared to the tedious compile, build and upload cycle doing traditianal AVR development.
 
-*Note* that this more dynamic development is possible with any Arduino hooked up to a computer via USB. But for the Yun it's possible to keep the developed code and make it permanent by running it on the Linux chip within the Yun.
+**Note** that this more dynamic development is possible with any Arduino hooked up to a computer via USB. But for the Yun it's possible to keep the developed code and make it permanent by running it on the Linux chip within the Yun.
 
 ### Easier integration with tons of libraries
 
@@ -246,7 +248,7 @@ To enable, run:
 
 After this the firmata app will run automatically every time the Yun is booted.
 
-*Note* that you can stop and start it again manually as well:
+**Note** that you can stop and start it again manually as well:
 
 `root@Arduino:~# /etc/init.d/zzz_firmata_app`
 
@@ -269,7 +271,7 @@ After these modifications, please **reboot** your Yun!
 
 I assume you are using a Mac or a Linux machine.
 
-*Note* by adding your public key to the Yun can make your life easier.
+**Note** that, by adding your public key to the Yun can make your life easier.
 
 You can use a simple helper script to upload your firmata app to the Yun.
 
@@ -281,7 +283,7 @@ For example: [upload_firmata_app.sh](upload_firmata_app.sh)
 2. Run `./upload_firmata_app.sh my_app.js` to upload it to your Yun
 3. Enjoy
 
-*Note* that your firmata app will be persistent. eg. Will run automatically when you power up your device.
+**Note** that your firmata app will be persistent. eg. Will run automatically when you power up your device.
 
 [1]: http://arduino.cc/en/Guide/ArduinoYun
 [2]: https://github.com/arduino/openwrt-yun
