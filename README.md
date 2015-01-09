@@ -9,7 +9,7 @@ That is possible on the [Yun][1], because the MCU and the Linux chip are connect
 
 My connecting post: [Programming an AVR MCU in JavaScript](http://imrehorvath.wordpress.com/2015/01/02/programming-an-avr-mcu-in-javascript/)
 
-**Note** that, there is another fine and similar solution, but in Ruby. The [Arduino Firmata](http://shokai.github.io/arduino_firmata/). The difference is that you can only use it with a PC or Mac, but bot with the Embedded Linux on the Yun. That is because the Ruby gems with native extensions are not supported on the Embedded Linux system at this time.
+**Note** that, there is another fine and similar solution, but in Ruby. The [Arduino Firmata](http://shokai.github.io/arduino_firmata/). The difference is that you can only use it with a PC or Mac, but not with the Embedded Linux on the Yun. That is because the Ruby gems with native extensions are not supported on the Embedded Linux system at this time.
 
 # Reasoning
 
